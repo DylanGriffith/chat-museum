@@ -45,3 +45,4 @@ group :development do
 end
 
 gem 'pg_search', '0.7.8'
+gem 'cinch'
