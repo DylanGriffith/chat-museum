@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: chat-museum_production
-  username: chat-museum
-  password: <%= ENV['CHAT-MUSEUM_DATABASE_PASSWORD'] %>
+  username: museum
