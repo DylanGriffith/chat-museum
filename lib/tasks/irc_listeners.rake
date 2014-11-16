@@ -2,31 +2,32 @@ require 'cinch'
 
 namespace :irc_listeners do
 
-  desc "Start listener for IRC channnel with channel_id"
-  task :start, [:channel_id] => :environment do |t, args|
-    channel = Channel.find(args[:channel_id])
+  desc "Start listener for IRC server with server_id"
+  task :start, [:server_id] => :environment do |t, args|
+    server = Server.find(args[:server_id])
+    p server
     bot = Cinch::Bot.new do
       configure do |c|
-        c.server = channel.hostname
-        c.channels = [channel.channel_name]
-        c.ssl.use = channel.use_ssl?
-        c.password = channel.password
+        c.server = server.hostname
+        c.channels = [server.channel_name]
+        c.ssl.use = server.use_ssl?
+        c.password = server.password
         c.nicks = ["ChatMuseum", "TheChatMuseum"]
-        c.port = channel.port
+        c.port = server.port
       end
 
       on :message do |message|
-        Message.create(:channel => channel, :content => message.message, :author => message.user.nick)
+        Message.create(:server => server, :content => message.message, :author => message.user.nick)
       end
     end
 
     bot.start
   end
 
-  desc "Start all listeners for IRC channnels"
+  desc "Start all listeners for IRC servers"
   task start_all: :environment do
-    Channel.pluck(:id).each do |channel_id|
-      Rake::Task["irc_listeners:start"].invoke(channel_id)
+    Server.pluck(:id).each do |server_id|
+      Rake::Task["irc_listeners:start"].invoke(server_id)
     end
   end
 end
