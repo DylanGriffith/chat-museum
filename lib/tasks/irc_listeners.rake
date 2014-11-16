@@ -9,7 +9,7 @@ namespace :irc_listeners do
     bot = Cinch::Bot.new do
       configure do |c|
         c.server = server.hostname
-        c.channels = [server.channel_name]
+        c.channels = server.channel_names
         c.ssl.use = server.use_ssl?
         c.password = server.password
         c.nicks = ["ChatMuseum", "TheChatMuseum"]
@@ -17,7 +17,7 @@ namespace :irc_listeners do
       end
 
       on :message do |message|
-        Message.create(:server => server, :content => message.message, :author => message.user.nick)
+        Message.create(:server => server, :channel_name => message.channel.name, :content => message.message, :author => message.user.nick)
       end
     end
 

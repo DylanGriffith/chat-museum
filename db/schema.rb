@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116062400) do
+ActiveRecord::Schema.define(version: 20141116064550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141116062400) do
     t.text     "author"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "channel_name"
   end
 
   add_index "messages", ["author"], name: "index_messages_on_author", using: :btree
@@ -29,12 +30,12 @@ ActiveRecord::Schema.define(version: 20141116062400) do
   create_table "servers", force: true do |t|
     t.text     "name"
     t.text     "hostname"
-    t.text     "channel_name"
     t.text     "password"
     t.integer  "port"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "use_ssl",      default: false
+    t.boolean  "use_ssl",       default: false
+    t.text     "channel_names", default: [],    array: true
   end
 
 end
