@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -39,4 +40,8 @@ group :test do
   gem 'rspec-rails'
 end
 
-gem 'pg_search', '0.7.7'
+group :development do
+  gem 'pry'
+end
+
+gem 'pg_search', '0.7.8'
