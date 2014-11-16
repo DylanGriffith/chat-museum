@@ -9,7 +9,7 @@ namespace :irc_listeners do
       configure do |c|
         c.server = channel.hostname
         c.channels = [channel.channel_name]
-        c.ssl.use = true
+        c.ssl.use = channel.use_ssl?
         c.password = channel.password
         c.nicks = ["ChatMuseum", "TheChatMuseum"]
         c.port = channel.port
