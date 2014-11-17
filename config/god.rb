@@ -21,7 +21,7 @@ God.watch do |w|
   # Clean stale PID files before starting.
   w.behavior :clean_pid_file
 
-  w.start = "rake irc_listeners:start_all"
+  w.start = "bundle exec rake irc_listeners:start_all &"
 
   w.log = "#{rails_root}/tmp/logs/irc_listeners.log"
 end
