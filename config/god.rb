@@ -22,4 +22,6 @@ God.watch do |w|
   w.behavior :clean_pid_file
 
   w.start = "rake irc_listeners:start_all"
+
+  w.log = "#{rails_root}/tmp/logs/irc_listeners.log"
 end
