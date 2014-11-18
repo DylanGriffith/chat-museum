@@ -47,3 +47,8 @@ end
 gem 'pg_search', '0.7.8'
 gem 'cinch'
 gem 'god'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-gplus'
+gem 'haml'
