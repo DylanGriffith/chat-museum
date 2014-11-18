@@ -7,3 +7,7 @@
       .btn.btn-primary
         = fa_icon "github"
         = "Sign in with Github"
+    %a{:href => user_omniauth_authorize_path(:facebook) }
+      .btn.btn-primary
+        = fa_icon "facebook"
+        = "Sign in with Facebook"

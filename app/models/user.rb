@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :omniauthable, :omniauth_providers => [:github]
+  devise :omniauthable, :omniauth_providers => [:github, :facebook]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      elsif data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
