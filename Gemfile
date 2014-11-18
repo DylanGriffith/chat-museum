@@ -8,6 +8,7 @@ gem 'rails', '4.1.7'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -52,3 +53,5 @@ gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-gplus'
 gem 'haml'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
