@@ -1,0 +1,19 @@
+%nav.navbar.navbar-inverse.navbar-default{:role => "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "/"} Chat Museum
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "/stats"}
+            Stats
+      .pull-right
+        %form.navbar-form.navbar-left{:role => "search", :action => "/messages/search"}
+          .form-group
+            %input.form-control{:placeholder => "Search", :type => "text", :name => "q"}
+          %button.btn.btn-default{:type => "submit"} Submit

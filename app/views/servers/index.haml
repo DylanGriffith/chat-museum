@@ -4,13 +4,4 @@
   - else
     %h2 Your account is awaiting approval from the museum director
 - else
-  %h2 Not Signed in
-  .btn-group.btn-group-vertical.sign-in
-    %a{:href => user_omniauth_authorize_path(:github) }
-      .btn.btn-primary
-        = fa_icon "github"
-        = "Sign in with Github"
-    %a{:href => user_omniauth_authorize_path(:facebook) }
-      .btn.btn-primary
-        = fa_icon "facebook"
-        = "Sign in with Facebook"
+  = render :partial => "shared/sign_in"
