@@ -134,7 +134,8 @@ CREATE TABLE users (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     provider character varying(255),
-    uid character varying(255)
+    uid character varying(255),
+    approved boolean DEFAULT false
 );
 
 
@@ -260,4 +261,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141116064550');
 INSERT INTO schema_migrations (version) VALUES ('20141117071528');
 
 INSERT INTO schema_migrations (version) VALUES ('20141117074721');
+
+INSERT INTO schema_migrations (version) VALUES ('20141118091048');
 

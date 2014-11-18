@@ -1,5 +1,8 @@
 - if user_signed_in?
-  %h2 Signed in!
+  - if current_user.approved?
+    %h2 Welcome!
+  - else
+    %h2 Your account is awaiting approval from the museum director
 - else
   %h2 Not Signed in
   .btn-group.btn-group-vertical.sign-in
