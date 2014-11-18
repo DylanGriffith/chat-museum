@@ -2,10 +2,9 @@ require 'cinch'
 
 namespace :irc_listeners do
 
-  desc "Start listener for IRC server with server_id"
+  desc "Start listener for IRC server with server_id using cinch"
   task :start, [:server_id] => :environment do |t, args|
     server = Server.find(args[:server_id])
-    p server
     bot = Cinch::Bot.new do
       configure do |c|
         c.server = server.hostname
@@ -17,7 +16,11 @@ namespace :irc_listeners do
       end
 
       on :message do |message|
-        Message.create(:server => server, :channel_name => message.channel.name, :content => message.message, :author => message.user.nick)
+        puts "GOT MESSAGE"
+        puts message
+        ActiveRecord::Base.connection_pool.with_connection do
+          Message.create(:server => server, :channel_name => message.channel.name, :content => message.message, :author => message.user.nick)
+        end
       end
     end
 
