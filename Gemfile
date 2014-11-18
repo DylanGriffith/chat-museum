@@ -55,3 +55,4 @@ gem 'omniauth-gplus'
 gem 'haml'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem "font-awesome-rails"

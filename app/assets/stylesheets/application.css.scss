@@ -1,2 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+
+.sign-in .btn {
+  i {
+    font-size: 3rem;
+  }
+  font-size: 2rem;
+}

@@ -2,4 +2,8 @@
   %h2 Signed in!
 - else
   %h2 Not Signed in
-  = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
+  .btn-group.btn-group-vertical.sign-in
+    %a{:href => user_omniauth_authorize_path(:github) }
+      .btn.btn-primary
+        = fa_icon "github"
+        = "Sign in with Github"
