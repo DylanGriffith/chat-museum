@@ -1,5 +1,6 @@
 rails_root = "/home/museum/chat-museum"
 irc_pid_file = "#{rails_root}/tmp/pids/irc-listeners.pid"
+unicorn_pid_file = "#{rails_root}/tmp/pids/unicorn.pid"
 
 God.watch do |w|
   w.name = "irc-listeners"
@@ -42,14 +43,14 @@ God.watch do |w|
   # Start, stop and restart commands for the process.
   # Here, we use unicorn to start the app and send signals to stop and restart.
   w.start = "unicorn -c #{rails_root}/config/unicorn.rb -E production -D"
-  w.stop = "kill -QUIT `cat #{pid_file}`"
-  w.restart = "kill -USR2 `cat #{pid_file}`" # hot deploy
+  w.stop = "kill -QUIT `cat #{unicorn_pid_file}`"
+  w.restart = "kill -USR2 `cat #{unicorn_pid_file}`" # hot deploy
 
   # Working directory where commands will be run.
   w.dir = rails_root
 
   # Where unicorn stores its PID file. God uses this to track the process.
-  w.pid_file = pid_file
+  w.pid_file = unicorn_pid_file
 
   # Clean stale PID files before starting.
   w.behavior :clean_pid_file
