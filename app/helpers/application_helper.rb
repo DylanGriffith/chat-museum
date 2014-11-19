@@ -1,6 +1,6 @@
 module ApplicationHelper
   def messages_before(message, count)
-    Message.where("id < ?", message.id).order(:id).reverse.first(count)
+    Message.where("id < ?", message.id).order(:id).last(count)
   end
 
   def messages_after(message, count)
