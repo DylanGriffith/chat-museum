@@ -1,8 +1,8 @@
 - messages_before(message, context_count).each do |m|
   .well.well-sm.message-before
     %span.created-at= "< #{time_ago_in_words(m.created_at)} ago >"
-    %span.author= message.author + ": "
-    %span.content= message.content
+    %span.author= m.author + ": "
+    %span.content= m.content
 .well.well-sm.main-message
   %span.created-at= "< #{time_ago_in_words(message.created_at)} ago >"
   %span.author= message.author + ": "
@@ -11,6 +11,6 @@
 - messages_after(message, context_count).each do |m|
   .well.well-sm.message-after
     %span.created-at= "< #{time_ago_in_words(m.created_at)} ago >"
-    %span.author= message.author + ": "
-    %span.content= message.content
+    %span.author= m.author + ": "
+    %span.content= m.content
 %hr
