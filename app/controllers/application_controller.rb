@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def new_session_path(scope)
     new_user_session_path
   end
+
+  def ensure_approved
+    redirect_to :root unless current_user.approved?
+  end
 end

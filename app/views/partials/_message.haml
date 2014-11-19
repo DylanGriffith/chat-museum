@@ -1,0 +1,6 @@
+- messages_before(message, context_count).each do |m|
+  .well.well-sm.message-before= m.content
+.well.main-message= message.content
+- messages_after(message, context_count).each do |m|
+  .well.well-sm.message-after= m.content
+%hr

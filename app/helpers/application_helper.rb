@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def messages_before(message, count)
+    Message.where("id < ?", message.id).order(:id).reverse.first(count)
+  end
+
+  def messages_after(message, count)
+    Message.where("id > ?", message.id).order(:id).first(count)
+  end
+
   def bootstrap_class_for flash_type
     { success: "alert-success", error: "alert-danger", alert: "alert-warning", notice: "alert-info" }[flash_type.to_sym] || flash_type.to_s
   end
