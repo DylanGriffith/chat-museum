@@ -1,6 +1,16 @@
 - messages_before(message, context_count).each do |m|
-  .well.well-sm.message-before= m.content
-.well.main-message= message.content
+  .well.well-sm.message-before
+    %span.created-at= "< #{time_ago_in_words(m.created_at)} ago >"
+    %span.author= message.author + ": "
+    %span.content= message.content
+.well.well-sm.main-message
+  %span.created-at= "< #{time_ago_in_words(message.created_at)} ago >"
+  %span.author= message.author + ": "
+  %span.content= message.content
+  %a.pull-right.message-link.fa.fa-external-link-square{:href => message_path(message)}
 - messages_after(message, context_count).each do |m|
-  .well.well-sm.message-after= m.content
+  .well.well-sm.message-after
+    %span.created-at= "< #{time_ago_in_words(m.created_at)} ago >"
+    %span.author= message.author + ": "
+    %span.content= message.content
 %hr

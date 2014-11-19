@@ -5,4 +5,16 @@
 .main-message {
   background-color: #27E897;
   margin: 0.1rem;
+  color: inherit;
+  .message-link {
+    font-size: 2rem;
+  }
+}
+.created-at {
+  font-weight: bold;
+}
+.author {
+  font-weight: bolder;
+}
+.content {
 }
